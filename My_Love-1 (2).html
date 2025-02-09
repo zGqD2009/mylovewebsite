@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Forgive Me?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .yes-button, .no-button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .yes-button {
+            background-color: blue;
+            color: white;
+        }
+        .no-button {
+            background-color: pink;
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        let noClickCount = 0;
+        const noGifs = [
+            "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODc1YTFiemxtbWRyMnBzZnltbjgweXk2MXc2MnVsZTAwY2J0cW4xcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PX6E0iX4x1O7fQ4pgt/giphy.gif",
+            "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzgyaXg2Nm12c3VhMjFiYnkzZjh4b204b3NjcjJqMzA5b2oyMnlkbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MFIsOqzodLr7ewnkUb/giphy.gif",
+            "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVta213eTF6NjYxa2FqZngyanNvenp1Nmc5Mmx6MHJ1MWdiNTVvaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/O5oRZiBtdSqS3K7YnE/giphy.gif",
+            "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExazJ5NHFwNTJjZXo2eXNxY3JtdHdpZW13M2t2Z2RudjlzMGI5bzN5eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zPZIJr2THWhidTrr7q/giphy.gif",
+            "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnFxNjlyYjBvbmg3NGJveHpmdnp6bjJ0cmQzMmZxZW1uYmJiNW80dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ofSB80kquLUD0ttZe/giphy.gif"
+        ];
+
+        function showResponse(response) {
+            document.getElementById("question").classList.add("hidden");
+            document.getElementById("yes-response").classList.add("hidden");
+            document.getElementById("no-response").classList.add("hidden");
+            
+            if (response === "no-response") {
+                noClickCount = (noClickCount + 1) % noGifs.length;
+                document.getElementById("no-gif").src = noGifs[noClickCount];
+            }
+
+            document.getElementById(response).classList.remove("hidden");
+        }
+    </script>
+</head>
+<body>
+    <div class="container" id="question">
+        <h1>Will you forgive me? Pleasee???</h1>
+        <div class="buttons">
+            <button class="yes-button" onclick="showResponse('yes-response')">Yes</button>
+            <button class="no-button" onclick="showResponse('no-response')">No</button>
+        </div>
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        </div>
+    </div>
+    
+    <div class="container hidden" id="yes-response">
+        <h1>I knew you'd forgive me hehehe</h1>
+        <div class="gif_container">
+            <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Happy GIF">
+        </div>
+    </div>
+    
+    <div class="container hidden" id="no-response">
+        <h1>Please reconsider...</h1>
+        <div class="gif_container">
+            <img id="no-gif" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODc1YTFiemxtbWRyMnBzZnltbjgweXk2MXc2MnVsZTAwY2J0cW4xcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PX6E0iX4x1O7fQ4pgt/giphy.gif" alt="Sad GIF">
+        </div>
+        <div class="buttons">
+            <button class="yes-button" onclick="showResponse('yes-response')">Yes</button>
+            <button class="no-button" onclick="showResponse('no-response')">No</button>
+        </div>
+    </div>
+</body>
+</html>
